@@ -1,0 +1,120 @@
+﻿<Window x:Class="NevaTelecomWorkWithCustomers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NevaTelecomWorkWithCustomers"
+        mc:Ignorable="d"
+        Title="Работа с абонентами" Height="547" Width="981" MinHeight="550" MinWidth="700">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="RoundedCorners">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="9"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="Button" x:Key="RoundButton">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="100" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+    <Grid >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="529*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="gridLeftMenu"  Grid.Column="0" Margin="10" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="404*"></RowDefinition>
+                <RowDefinition Height="127*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <Image Source="Images/logoTNS.jpg"></Image>
+                
+                <Separator Background="Transparent"></Separator>
+                
+                <Button Name="btnCustomers"  Style="{DynamicResource RoundedCorners}" Click="btnCustomers_Click">
+                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Абоненты</TextBlock>
+                </Button>
+                
+                <Separator Background="Transparent"></Separator>
+                
+                <Button Name="btnManagingDevices" Padding="5"  Style="{DynamicResource RoundedCorners}" Click="btnManagingDevices_Click">
+                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Управление оборудованием</TextBlock>
+                </Button>
+                
+                <Separator Background="Transparent"></Separator>
+                
+                <Button Name="btnActives"  Style="{DynamicResource RoundedCorners}" Click="btnActives_Click">
+                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Активы</TextBlock>
+                </Button>
+                
+                <Separator Background="Transparent"></Separator>
+                
+                <Button Name="btnBilling"  Style="{DynamicResource RoundedCorners}" Click="btnBilling_Click">
+                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Биллинг</TextBlock>
+                </Button>
+                
+                <Separator Background="Transparent"></Separator>
+                
+                <Button  Name="btnCustomersSupport" Style="{DynamicResource RoundedCorners}" Click="btnCustomersSupport_Click">
+                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Поддержка пользователей</TextBlock>
+                </Button>
+                
+                <Separator Background="Transparent"></Separator>
+                
+                <Button Name="btnCRM"  Style="{DynamicResource RoundedCorners}" Click="btnCRM_Click">
+                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">CRM</TextBlock>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button Content="проф."  Width="40" Height="40" Style="{DynamicResource RoundButton}" FontWeight="Bold">
+                </Button>
+                <Separator Background="Transparent"></Separator>
+                <Button Content="?" Width="40" Height="40" Style="{DynamicResource RoundButton}" FontSize="24" FontWeight="Bold">
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="gridMiddleData" Grid.Column="1" Margin="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="524*" ></ColumnDefinition>
+                <ColumnDefinition Width="200" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="351*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Name="txtCurrentPage" FontWeight="Normal" FontSize="36" Margin="10 0 0 0" 
+                       VerticalAlignment="Center" Text="{Binding Title}"></TextBlock>
+
+            <Frame x:Name="mainFrame" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" ></Frame>
+            
+            
+            <WrapPanel Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center"  >
+                <ComboBox Name="comboBoxUsers" Height="25"  SelectedIndex="0" SelectionChanged="comboBoxUsers_SelectionChanged"></ComboBox>
+                <Separator Width="10" Background="Transparent"></Separator>
+                <Button Content="ФОТО" Width="40" Height="40" Style="{DynamicResource RoundButton}"  ></Button>
+            </WrapPanel>
+
+        </Grid>
+
+
+    </Grid>
+
+</Window>
+    
