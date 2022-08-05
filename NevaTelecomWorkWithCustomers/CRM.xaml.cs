@@ -23,6 +23,7 @@ namespace NevaTelecomWorkWithCustomers
         public CRM()
         {
             InitializeComponent();
+            DataContext = new CRMViewModel();
         }
     }
 }

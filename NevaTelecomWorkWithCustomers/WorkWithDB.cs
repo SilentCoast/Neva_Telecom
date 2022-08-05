@@ -39,7 +39,6 @@ namespace NevaTelecomWorkWithCustomers
 
         internal static List<Абоненты> getActiveCustomers(string FIO, string adress, string personalAccount)
         {
-            
             return (from p in db.Абоненты 
                     where p.Дата_расторжения_договора==null 
                     where (p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount)) 

@@ -59,7 +59,7 @@ namespace NevaTelecomWorkWithCustomers
 
         private void btnCustomers_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPage = "Абоненты";
+            //CurrentPage = "Абоненты";
             var customers = new Customers(comboBoxUsers.SelectedItem.ToString());
             DataContext = customers;
             mainFrame.Navigate(customers);
@@ -67,27 +67,30 @@ namespace NevaTelecomWorkWithCustomers
 
         private void btnManagingDevices_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPage = "Управление оборудованием";
+           // CurrentPage = "Управление оборудованием";
         }
 
         private void btnActives_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPage = "Активы";
+            //CurrentPage = "Активы";
         }
 
         private void btnBilling_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPage = "Биллинг";
+           // CurrentPage = "Биллинг";
         }
 
         private void btnCustomersSupport_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPage = "Поддержка пользователей";
+           // CurrentPage = "Поддержка пользователей";
         }
 
         private void btnCRM_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPage = "CRM";
+           // CurrentPage = "CRM";
+            var crm = new CRM();
+            DataContext = crm;
+            mainFrame.Navigate(crm);
         }
 
         /// <summary>
@@ -106,7 +109,7 @@ namespace NevaTelecomWorkWithCustomers
             btnBilling.IsEnabled = false;
             btnManagingDevices.IsEnabled = false;
             btnActives.IsEnabled = false;
-            //set enabled only available
+            //set enabled only available for current user
             foreach (var i in modules)
             {
                 switch (i)

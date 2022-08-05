@@ -10,6 +10,65 @@
       Background="White">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="109*"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
         
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label>ФИО</Label>
+            <TextBox MinWidth="200"></TextBox>
+            <Label>Телефон</Label>
+            <TextBox MinWidth="200"></TextBox>
+            <Button>Поиск абонента</Button>
+        </StackPanel>
+        <Border Grid.Row="1" BorderThickness="4" BorderBrush="Black"></Border>
+        <ScrollViewer Margin="10" Grid.Row="1">
+
+        <StackPanel DataContext="{Binding Current}">
+                
+            <Label>Номер заявки</Label>
+            <TextBox></TextBox>
+            
+            <Label>Дата создания</Label>
+            <TextBox></TextBox>
+            
+            <Label>Номер телефона абонента</Label>
+            <TextBox></TextBox>
+            
+            <Label>ЛС_абонента</Label>
+                <TextBox Text="{Binding ЛС_абонента}" ></TextBox>
+            
+            <Label>Услуга</Label>
+            <TextBox></TextBox>
+            
+            <Label>Вид_услуги</Label>
+            <TextBox></TextBox>
+            
+            <Label>Тип_услуги</Label>
+            <TextBox></TextBox>
+            
+            <Label>Статус</Label>
+            <TextBox></TextBox>
+            
+            <Label>Тип_оборудования</Label>
+            <TextBox></TextBox>
+            
+            <Label>Описание_проблемы</Label>
+            <TextBox></TextBox>
+
+            <Label>Дата_закрытия</Label>
+            <TextBox></TextBox>
+            
+            <Label>Тип_проблемы</Label>
+            <TextBox></TextBox>
+            
+
+        </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Padding="10">Сохранить и закрыть заявку</Button>
+        </StackPanel>
     </Grid>
 </Page>

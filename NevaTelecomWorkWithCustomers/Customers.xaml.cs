@@ -26,7 +26,7 @@ namespace NevaTelecomWorkWithCustomers
         {
             InitializeComponent();
 
-            doFilters();
+            
             this.employeeFIO = employeeFIO;
             listBoxEvents.ItemsSource = WorkWithDB.getEventsForFIO(employeeFIO);
         }
@@ -84,7 +84,7 @@ namespace NevaTelecomWorkWithCustomers
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            //doFilters();
         }
     }
 }
