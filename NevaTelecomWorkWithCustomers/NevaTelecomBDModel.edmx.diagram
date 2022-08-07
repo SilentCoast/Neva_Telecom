@@ -6,13 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="3dfa3d6390b546cf914c7cc8fbd2b8b8" Name="Diagram1">
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Абоненты" Width="1.5" PointX="8.25" PointY="0.5" />
-        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.AvailableModul" Width="1.5" PointX="0.875" PointY="5.25" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Position" Width="1.5" PointX="0.875" PointY="3.25" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Employee" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Event" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.sysdiagram" Width="1.5" PointX="5.375" PointY="0.75" />
         <AssociationConnector Association="NEVA_TELECOM_DBModel.FK_Employees_Positions" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Заявки" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.AvailableModule" Width="2.75" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

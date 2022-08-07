@@ -12,10 +12,10 @@ namespace NevaTelecomWorkWithCustomers
     using System;
     using System.Collections.Generic;
     
-    public partial class AvailableModul
+    public partial class AvailableModule
     {
         public string Id_do_not_use { get; set; }
         public string Access_Code { get; set; }
-        public string Available_Modul { get; set; }
+        public string Available_Module { get; set; }
     }
 }

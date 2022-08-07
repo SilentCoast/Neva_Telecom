@@ -21,7 +21,7 @@ namespace NevaTelecomWorkWithCustomers
             {
                 var positionID = (from p in db.Employees where p.FIO == FIO select p.Position_Id).First();
                 var AcessCODE = (from p in db.Positions where p.Id == positionID select p.Access_Code).First();
-                return (from p in db.AvailableModuls where p.Access_Code == AcessCODE select p.Available_Modul).ToList();
+                return (from p in db.AvailableModules where p.Access_Code == AcessCODE select p.Available_Module).ToList();
             }
             catch { return null; }
 

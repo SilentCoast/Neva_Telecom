@@ -90,7 +90,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AvailableModul.cs">
+    <Compile Include="AvailableModule.cs">
       <DependentUpon>NevaTelecomBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CRM.xaml.cs">

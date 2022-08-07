@@ -5,13 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="NEVA_TELECOM_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AvailableModuls">
+        <EntityType Name="AvailableModules">
           <Key>
             <PropertyRef Name="Id_do_not_use" />
           </Key>
           <Property Name="Id_do_not_use" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Access_Code" Type="nvarchar" MaxLength="50" />
-          <Property Name="Available_Modul" Type="nvarchar" MaxLength="50" />
+          <Property Name="Available_Module" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -136,7 +136,7 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="NEVA_TELECOM_DBModelStoreContainer">
-          <EntitySet Name="AvailableModuls" EntityType="Self.AvailableModuls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvailableModules" EntityType="Self.AvailableModules" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
@@ -195,7 +195,6 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="Абоненты" EntityType="NEVA_TELECOM_DBModel.Абоненты" />
-          <EntitySet Name="AvailableModuls" EntityType="NEVA_TELECOM_DBModel.AvailableModul" />
           <EntitySet Name="Positions" EntityType="NEVA_TELECOM_DBModel.Position" />
           <EntitySet Name="Employees" EntityType="NEVA_TELECOM_DBModel.Employee" />
           <EntitySet Name="Events" EntityType="NEVA_TELECOM_DBModel.Event" />
@@ -205,6 +204,7 @@
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
           <EntitySet Name="Заявки" EntityType="NEVA_TELECOM_DBModel.Заявки" />
+          <EntitySet Name="AvailableModules" EntityType="NEVA_TELECOM_DBModel.AvailableModule" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -241,14 +241,6 @@
           <Property Name="Услуги" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Дата_расторжения_договора" Type="DateTime" Precision="0" />
           <Property Name="Серийный_номер_оборудования" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AvailableModul">
-          <Key>
-            <PropertyRef Name="Id_do_not_use" />
-          </Key>
-          <Property Name="Id_do_not_use" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Access_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Available_Modul" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -318,6 +310,14 @@
           <Property Name="Дата_закрытия" Type="DateTime" Precision="0" />
           <Property Name="Тип_проблемы" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="AvailableModule">
+          <Key>
+            <PropertyRef Name="Id_do_not_use" />
+          </Key>
+          <Property Name="Id_do_not_use" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Access_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Available_Module" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -371,15 +371,6 @@
                 <ScalarProperty Name="Пол" ColumnName="Пол" />
                 <ScalarProperty Name="ФИО" ColumnName="ФИО" />
                 <ScalarProperty Name="Номер_абонента" ColumnName="Номер абонента" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AvailableModuls">
-            <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.AvailableModul">
-              <MappingFragment StoreEntitySet="AvailableModuls">
-                <ScalarProperty Name="Available_Modul" ColumnName="Available_Modul" />
-                <ScalarProperty Name="Access_Code" ColumnName="Access_Code" />
-                <ScalarProperty Name="Id_do_not_use" ColumnName="Id_do_not_use" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -439,6 +430,15 @@
                 <ScalarProperty Name="Номер_телефона_абонента" ColumnName="Номер_телефона_абонента" />
                 <ScalarProperty Name="Дата_создания" ColumnName="Дата_создания" />
                 <ScalarProperty Name="Номер_заявки" ColumnName="Номер_заявки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvailableModules">
+            <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.AvailableModule">
+              <MappingFragment StoreEntitySet="AvailableModules">
+                <ScalarProperty Name="Available_Module" ColumnName="Available_Module" />
+                <ScalarProperty Name="Access_Code" ColumnName="Access_Code" />
+                <ScalarProperty Name="Id_do_not_use" ColumnName="Id_do_not_use" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

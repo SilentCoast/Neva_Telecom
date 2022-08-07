@@ -28,12 +28,12 @@ namespace NevaTelecomWorkWithCustomers
         }
     
         public virtual DbSet<Абоненты> Абоненты { get; set; }
-        public virtual DbSet<AvailableModul> AvailableModuls { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Заявки> Заявки { get; set; }
+        public virtual DbSet<AvailableModule> AvailableModules { get; set; }
     
         public virtual ObjectResult<string> sp_GetEmployeePosition(string number)
         {
