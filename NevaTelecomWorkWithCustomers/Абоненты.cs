@@ -14,6 +14,12 @@ namespace NevaTelecomWorkWithCustomers
     
     public partial class Абоненты
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Абоненты()
+        {
+            this.Заявки = new HashSet<Заявки>();
+        }
+    
         public string Номер_абонента { get; set; }
         public string ФИО { get; set; }
         public string Пол { get; set; }
@@ -34,5 +40,8 @@ namespace NevaTelecomWorkWithCustomers
         public string Услуги { get; set; }
         public Nullable<System.DateTime> Дата_расторжения_договора { get; set; }
         public string Серийный_номер_оборудования { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Заявки> Заявки { get; set; }
     }
 }

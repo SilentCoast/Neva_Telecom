@@ -12,7 +12,7 @@ namespace NevaTelecomWorkWithCustomers
     {
         public CustomersViewModel(string employeeFIO)
         {
-            events = WorkWithDB.getEventsForFIO(employeeFIO);
+            events = WorkWithDB.GetEventsForFIO(employeeFIO);
         }
         [ObservableProperty]
         private List<Event> events;

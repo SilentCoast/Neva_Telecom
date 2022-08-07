@@ -16,9 +16,6 @@ namespace NevaTelecomWorkWithCustomers
     {
         public string Номер_заявки { get; set; }
         public Nullable<System.DateTime> Дата_создания { get; set; }
-        public string Номер_телефона_абонента { get; set; }
-        public string ЛС_абонента { get; set; }
-        public string Услуга { get; set; }
         public string Вид_услуги { get; set; }
         public string Тип_услуги { get; set; }
         public string Статус { get; set; }
@@ -26,5 +23,8 @@ namespace NevaTelecomWorkWithCustomers
         public string Описание_проблемы { get; set; }
         public Nullable<System.DateTime> Дата_закрытия { get; set; }
         public string Тип_проблемы { get; set; }
+        public string Номер_абонента { get; set; }
+    
+        public virtual Абоненты Абоненты { get; set; }
     }
 }

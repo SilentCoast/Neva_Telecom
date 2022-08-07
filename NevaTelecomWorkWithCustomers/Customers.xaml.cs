@@ -28,7 +28,7 @@ namespace NevaTelecomWorkWithCustomers
 
             
             this.employeeFIO = employeeFIO;
-            listBoxEvents.ItemsSource = WorkWithDB.getEventsForFIO(employeeFIO);
+            listBoxEvents.ItemsSource = WorkWithDB.GetEventsForFIO(employeeFIO);
         }
 
         
@@ -53,17 +53,17 @@ namespace NevaTelecomWorkWithCustomers
             }
             if (checkBoxShowActiveCustomers.IsChecked == true && checkBoxShowNotActiveCustomers.IsChecked == true)
             {
-                dataGridCustomers.ItemsSource = WorkWithDB.getCustomers(txtFilterFIO.Text, txtFilterAdress.Text, txtFilterPersonalAccount.Text);
+                dataGridCustomers.ItemsSource = WorkWithDB.GetCustomers(txtFilterFIO.Text, txtFilterAdress.Text, txtFilterPersonalAccount.Text);
                 return;
             }
             if (checkBoxShowActiveCustomers.IsChecked == true)
             {
-                dataGridCustomers.ItemsSource = WorkWithDB.getActiveCustomers(txtFilterFIO.Text, txtFilterAdress.Text, txtFilterPersonalAccount.Text);
+                dataGridCustomers.ItemsSource = WorkWithDB.GetActiveCustomers(txtFilterFIO.Text, txtFilterAdress.Text, txtFilterPersonalAccount.Text);
                 return;
             }
             if (checkBoxShowNotActiveCustomers.IsChecked == true)
             {
-                dataGridCustomers.ItemsSource = WorkWithDB.getNotActiveCustomers(txtFilterFIO.Text, txtFilterAdress.Text, txtFilterPersonalAccount.Text);
+                dataGridCustomers.ItemsSource = WorkWithDB.GetNotActiveCustomers(txtFilterFIO.Text, txtFilterAdress.Text, txtFilterPersonalAccount.Text);
                 return;
             }
             if (checkBoxShowActiveCustomers.IsChecked == false && checkBoxShowNotActiveCustomers.IsChecked == false)

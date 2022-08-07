@@ -16,8 +16,7 @@ namespace NevaTelecomWorkWithCustomers
 
         public CRMViewModel()
         {
-            Current = new Заявки();
-            Current.ЛС_абонента = "sfsdgd";
+            
         }
 
         public Заявки Current

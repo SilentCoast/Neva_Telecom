@@ -15,7 +15,7 @@ namespace NevaTelecomWorkWithCustomers
             return  db.Employees.Select(pr=>pr.FIO).ToList();
         }
 
-        internal static List<string> getAvailableModulesForFIO(string FIO)
+        internal static List<string> GetAvailableModulesForFIO(string FIO)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace NevaTelecomWorkWithCustomers
 
         //TODO: connect following 3 methods to 1(issue: code duplicating), add parameter isActive(represents whether select active,inactive or all customers)
 
-        internal static List<Абоненты> getCustomers(string FIO, string adress , string personalAccount  )
+        internal static List<Абоненты> GetCustomers(string FIO, string adress , string personalAccount  )
         {
             
             return (from p in db.Абоненты 
@@ -37,14 +37,14 @@ namespace NevaTelecomWorkWithCustomers
                     select p).ToList();
         }
 
-        internal static List<Абоненты> getActiveCustomers(string FIO, string adress, string personalAccount)
+        internal static List<Абоненты> GetActiveCustomers(string FIO, string adress, string personalAccount)
         {
             return (from p in db.Абоненты 
                     where p.Дата_расторжения_договора==null 
                     where (p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount)) 
                     select p).ToList();
         }
-        internal static List<Абоненты> getNotActiveCustomers(string FIO, string adress, string personalAccount)
+        internal static List<Абоненты> GetNotActiveCustomers(string FIO, string adress, string personalAccount)
         {
             return (from p in db.Абоненты 
                     where p.Дата_расторжения_договора != null
@@ -59,7 +59,7 @@ namespace NevaTelecomWorkWithCustomers
         //     where (p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount))
         //     select p).ToList();
         //}
-        internal static List<Event> getEventsForFIO(string FIO)
+        internal static List<Event> GetEventsForFIO(string FIO)
         {
             var positionId = (from p in db.Employees where p.FIO == FIO select p.Position_Id).FirstOrDefault();
             var positionName = (from p in db.Positions where p.Id == positionId select p.Name).FirstOrDefault();

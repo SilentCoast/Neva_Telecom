@@ -101,7 +101,7 @@ namespace NevaTelecomWorkWithCustomers
         private void comboBoxUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btnCustomers.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-            var modules = WorkWithDB.getAvailableModulesForFIO(comboBoxUsers.SelectedItem.ToString());
+            var modules = WorkWithDB.GetAvailableModulesForFIO(comboBoxUsers.SelectedItem.ToString());
             //set all disabled
             btnCustomers.IsEnabled = false;
             btnCustomersSupport.IsEnabled = false;
