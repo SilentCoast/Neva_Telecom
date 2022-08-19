@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ namespace NevaTelecomWorkWithCustomers
 
         internal static List<string> GetEmployeesFIOs()
         {
-            return  db.Employees.Select(pr=>pr.FIO).ToList();
+            return db.Employees.Select(pr => pr.FIO).ToList();
         }
 
         internal static List<string> GetAvailableModulesForFIO(string FIO)
@@ -29,24 +31,24 @@ namespace NevaTelecomWorkWithCustomers
 
         //TODO: connect following 3 methods to 1(issue: code duplicating), add parameter isActive(represents whether select active,inactive or all customers)
 
-        internal static List<Абоненты> GetCustomers(string FIO, string adress , string personalAccount  )
+        internal static List<Абоненты> GetCustomers(string FIO, string adress, string personalAccount)
         {
-            
-            return (from p in db.Абоненты 
-                    where( p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount)) 
+
+            return (from p in db.Абоненты
+                    where (p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount))
                     select p).ToList();
         }
 
         internal static List<Абоненты> GetActiveCustomers(string FIO, string adress, string personalAccount)
         {
-            return (from p in db.Абоненты 
-                    where p.Дата_расторжения_договора==null 
-                    where (p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount)) 
+            return (from p in db.Абоненты
+                    where p.Дата_расторжения_договора == null
+                    where (p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount))
                     select p).ToList();
         }
         internal static List<Абоненты> GetNotActiveCustomers(string FIO, string adress, string personalAccount)
         {
-            return (from p in db.Абоненты 
+            return (from p in db.Абоненты
                     where p.Дата_расторжения_договора != null
                     where (p.ФИО.Contains(FIO) && p.Адрес_прописки.Contains(adress) && p.Лицевой_счет.Contains(personalAccount))
                     select p).ToList();
@@ -66,7 +68,49 @@ namespace NevaTelecomWorkWithCustomers
             return (from p in db.Events where p.Position_Name == positionName select p).ToList();
         }
 
+        internal static string GetCustomerNumber(string FIO,string mobileNumber)
+        {
+            return (from z in db.Абоненты
+                     where (z.ФИО == FIO && z.Номер_телефона == mobileNumber)
+                     select z.Номер_абонента).FirstOrDefault();
+            
+        }
 
+        internal static Абоненты GetCustomer(string FIO, string mobileNumber)
+        {
+            return (from z in db.Абоненты
+                    where (z.ФИО == FIO && z.Номер_телефона == mobileNumber)
+                    select z).FirstOrDefault();
+
+        }
+        internal static Заявки GetЗаявка()
+        {
+            return (from z in db.Заявки
+                    select z).FirstOrDefault();
+
+        }
+        internal static void SendЗаявка(Заявки zai)
+        {
+            db.Заявки.Add(zai);
+            
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\"" +
+                        $" in state \"{eve.Entry.State}\" has the following validation errors:");
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+            }
+        }
     }
     
 

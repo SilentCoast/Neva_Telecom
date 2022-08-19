@@ -9,9 +9,10 @@
 
 namespace NevaTelecomWorkWithCustomers
 {
+    using PropertyChanged;
     using System;
     using System.Collections.Generic;
-    
+    [AddINotifyPropertyChangedInterface]
     public partial class Заявки
     {
         public string Номер_заявки { get; set; }

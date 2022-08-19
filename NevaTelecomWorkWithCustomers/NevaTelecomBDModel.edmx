@@ -58,7 +58,7 @@
           <Property Name="ФИО" Type="nvarchar" MaxLength="90" />
           <Property Name="Пол" Type="nvarchar" MaxLength="50" />
           <Property Name="Дата_рождения" Type="date" />
-          <Property Name="Номер_телефона" Type="nvarchar" MaxLength="50" />
+          <Property Name="Номер_телефона" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Электронная_почта" Type="nvarchar" MaxLength="50" />
           <Property Name="Адрес_прописки" Type="nvarchar" MaxLength="50" />
           <Property Name="Адрес_проживания" Type="nvarchar" MaxLength="50" />
@@ -302,7 +302,7 @@
           <Property Name="ФИО" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
           <Property Name="Пол" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
-          <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Электронная_почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Адрес_прописки" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Адрес_проживания" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

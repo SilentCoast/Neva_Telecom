@@ -18,51 +18,52 @@
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Label>ФИО</Label>
-            <TextBox MinWidth="200"></TextBox>
+            <TextBox Text="{Binding Current.Абоненты.ФИО}" MinWidth="200"></TextBox>
             <Label>Телефон</Label>
-            <TextBox MinWidth="200"></TextBox>
-            <Button>Поиск абонента</Button>
+            <TextBox Text="{Binding Current.Абоненты.Номер_телефона}" MinWidth="200"></TextBox>
+            <Button Command="{Binding ClickSearch}" >Поиск абонента</Button>
         </StackPanel>
         <Border Grid.Row="1" BorderThickness="4" BorderBrush="Black"></Border>
         <ScrollViewer Margin="10" Grid.Row="1">
 
-        <StackPanel DataContext="{Binding Current}">
+            <StackPanel IsEnabled="{Binding Path=StackPanelIsEnabled}">
                 
             <Label>Номер заявки</Label>
             <TextBox></TextBox>
             
             <Label>Дата создания</Label>
-            <TextBox></TextBox>
+                <TextBox Text="{Binding Path=Current.Дата_создания,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
             
             <Label>Номер телефона абонента</Label>
-            <TextBox></TextBox>
+                <TextBox Text="{Binding Path= Current.Абоненты.Номер_телефона, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             
-            <Label>ЛС_абонента</Label>
-                <TextBox Text="{Binding ЛС_абонента}" ></TextBox>
+            <Label>ЛС абонента</Label>
+                <TextBox  Text="{Binding Path = Current.Абоненты.Лицевой_счет,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
             
             <Label>Услуга</Label>
+                <TextBox  Text="{Binding Path = Current.Абоненты.Услуги,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            
+            <Label>Вид_ услуги</Label>
             <TextBox></TextBox>
             
-            <Label>Вид_услуги</Label>
-            <TextBox></TextBox>
-            
-            <Label>Тип_услуги</Label>
+            <Label>Тип_ услуги</Label>
             <TextBox></TextBox>
             
             <Label>Статус</Label>
             <TextBox></TextBox>
             
-            <Label>Тип_оборудования</Label>
+            <Label>Тип_ оборудования</Label>
             <TextBox></TextBox>
             
-            <Label>Описание_проблемы</Label>
+            <Label>Описание_ проблемы</Label>
             <TextBox></TextBox>
 
-            <Label>Дата_закрытия</Label>
+            <Label>Тип_ проблемы</Label>
             <TextBox></TextBox>
             
-            <Label>Тип_проблемы</Label>
+            <Label>Дата_ закрытия</Label>
             <TextBox></TextBox>
+            
             
 
         </StackPanel>
