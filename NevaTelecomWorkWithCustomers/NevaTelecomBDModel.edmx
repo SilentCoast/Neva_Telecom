@@ -50,6 +50,24 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NEVA_TELECOM_DB.dbo.Types_of_Problem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Types_of_Problem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Type_of_problem" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_of_problem" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypesOfService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KindOfService" Type="nvarchar(max)" />
+          <Property Name="TypeOfService" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Абоненты">
           <Key>
             <PropertyRef Name="Номер_абонента" />
@@ -89,6 +107,16 @@
           <Property Name="Дата_закрытия" Type="date" />
           <Property Name="Тип_проблемы" Type="nvarchar" MaxLength="50" />
           <Property Name="Номер_абонента" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NEVA_TELECOM_DB.dbo.СтатусыЗаявки' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="СтатусыЗаявки">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Статус" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Статус" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Employees_Positions">
           <End Role="Positions" Type="Self.Positions" Multiplicity="0..1" />
@@ -151,8 +179,21 @@
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypesOfService" EntityType="Self.TypesOfService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Абоненты" EntityType="Self.Абоненты" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Заявки" EntityType="Self.Заявки" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Types_of_Problem" EntityType="Self.Types_of_Problem" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Types_of_Problem].[Id] AS [Id], 
+    [Types_of_Problem].[Type_of_problem] AS [Type_of_problem]
+    FROM [dbo].[Types_of_Problem] AS [Types_of_Problem]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="СтатусыЗаявки" EntityType="Self.СтатусыЗаявки" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [СтатусыЗаявки].[Id] AS [Id], 
+    [СтатусыЗаявки].[Статус] AS [Статус]
+    FROM [dbo].[СтатусыЗаявки] AS [СтатусыЗаявки]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Employees_Positions" Association="Self.FK_Employees_Positions">
             <End Role="Positions" EntitySet="Positions" />
             <End Role="Employees" EntitySet="Employees" />
@@ -223,6 +264,9 @@
             <End Role="Абоненты" EntitySet="Абоненты" />
             <End Role="Заявки" EntitySet="Заявки" />
           </AssociationSet>
+          <EntitySet Name="TypesOfServices" EntityType="NEVA_TELECOM_DBModel.TypesOfService" />
+          <EntitySet Name="Types_of_Problem" EntityType="NEVA_TELECOM_DBModel.Types_of_Problem" />
+          <EntitySet Name="СтатусыЗаявки" EntityType="NEVA_TELECOM_DBModel.СтатусыЗаявки" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -348,6 +392,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TypesOfService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KindOfService" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfService" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Types_of_Problem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Type_of_problem" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_of_problem" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="СтатусыЗаявки">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Статус" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Статус" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -467,6 +535,31 @@
                 <ScalarProperty Name="Вид_услуги" ColumnName="Вид_услуги" />
                 <ScalarProperty Name="Дата_создания" ColumnName="Дата_создания" />
                 <ScalarProperty Name="Номер_заявки" ColumnName="Номер_заявки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypesOfServices">
+            <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.TypesOfService">
+              <MappingFragment StoreEntitySet="TypesOfService">
+                <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
+                <ScalarProperty Name="KindOfService" ColumnName="KindOfService" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types_of_Problem">
+            <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.Types_of_Problem">
+              <MappingFragment StoreEntitySet="Types_of_Problem">
+                <ScalarProperty Name="Type_of_problem" ColumnName="Type_of_problem" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="СтатусыЗаявки">
+            <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.СтатусыЗаявки">
+              <MappingFragment StoreEntitySet="СтатусыЗаявки">
+                <ScalarProperty Name="Статус" ColumnName="Статус" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

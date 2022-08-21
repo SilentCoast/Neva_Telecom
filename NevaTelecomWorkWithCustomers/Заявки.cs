@@ -9,9 +9,9 @@
 
 namespace NevaTelecomWorkWithCustomers
 {
-    using PropertyChanged;
     using System;
     using System.Collections.Generic;
+    using PropertyChanged;
     [AddINotifyPropertyChangedInterface]
     public partial class Заявки
     {

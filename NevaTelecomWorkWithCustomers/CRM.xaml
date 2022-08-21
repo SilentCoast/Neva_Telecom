@@ -29,7 +29,7 @@
             <StackPanel IsEnabled="{Binding Path=StackPanelIsEnabled}">
                 
             <Label>Номер заявки</Label>
-            <TextBox></TextBox>
+            <TextBox Text="{Binding Path=Current.Номер_заявки}" ></TextBox>
             
             <Label>Дата создания</Label>
                 <TextBox Text="{Binding Path=Current.Дата_создания,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
@@ -50,13 +50,13 @@
             <TextBox></TextBox>
             
             <Label>Статус</Label>
-            <TextBox></TextBox>
+            <ComboBox></ComboBox>
             
             <Label>Тип_ оборудования</Label>
-            <TextBox></TextBox>
+            <TextBox Text="{Binding Path=Current.Абоненты.Серийный_номер_оборудования}"></TextBox>
             
             <Label>Описание_ проблемы</Label>
-            <TextBox></TextBox>
+            <TextBox Text="{Binding Path=Current.Описание_проблемы}"></TextBox>
 
             <Label>Тип_ проблемы</Label>
             <TextBox></TextBox>
@@ -69,7 +69,7 @@
         </StackPanel>
         </ScrollViewer>
         <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Padding="10">Сохранить и закрыть заявку</Button>
+            <Button Padding="10" Command="{Binding Path=SaveЗаявку}">Сохранить и закрыть заявку</Button>
         </StackPanel>
     </Grid>
 </Page>
