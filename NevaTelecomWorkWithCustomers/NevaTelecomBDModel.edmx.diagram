@@ -14,9 +14,11 @@
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Абоненты" Width="1.5" PointX="9.125" PointY="1.125" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Заявки" Width="1.5" PointX="11.375" PointY="2" />
         <AssociationConnector Association="NEVA_TELECOM_DBModel.FK_Заявки_Абоненты" />
-        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.TypesOfService" Width="1.5" PointX="3.375" PointY="3.75" />
-        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Types_of_Problem" Width="1.5" PointX="5.375" PointY="3.75" />
-        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.СтатусыЗаявки" Width="1.5" PointX="4.375" PointY="6.75" />
+        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Kinds_of_service" Width="1.5" PointX="6.375" PointY="6.75" />
+        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.TypesOfService" Width="1.5" PointX="8.5" PointY="6.75" />
+        <AssociationConnector Association="NEVA_TELECOM_DBModel.FK_TypesOfService_Kinds_of_service" />
+        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Types_of_Problem" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.СтатусыЗаявки" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

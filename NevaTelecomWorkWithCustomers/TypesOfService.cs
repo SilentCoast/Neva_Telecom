@@ -14,8 +14,10 @@ namespace NevaTelecomWorkWithCustomers
     
     public partial class TypesOfService
     {
-        public long Id { get; set; }
-        public string KindOfService { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> KindOfServiceId { get; set; }
         public string TypeOfService { get; set; }
+    
+        public virtual Kinds_of_service Kinds_of_service { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace NevaTelecomWorkWithCustomers
             //test data
             Current.Абоненты.ФИО = "Фастера Клара Герасимовна";
             Current.Абоненты.Номер_телефона = "+7 (909) 182-89-26";
-            // Current.Абоненты = WorkWithDB.GetCustomer(Current.Абоненты.ФИО, Current.Абоненты.Номер_телефона);
+            //end test data
 
         }
 
@@ -35,7 +35,9 @@ namespace NevaTelecomWorkWithCustomers
         private bool stackPanelIsEnabled;
         public bool StackPanelIsEnabled { get => stackPanelIsEnabled; set => stackPanelIsEnabled = value; }
 
-        
+        public List<string> СтатусыЗаявки { get => WorkWithDB.GetСтатусыЗаявки(); }
+        public List<string> TypesOfProblem { get=> WorkWithDB.GetTypesOfProblem(); }
+        public List<string> KindsOfService { get => WorkWithDB.GetKindsOfService(); }
 
         
 
@@ -47,10 +49,14 @@ namespace NevaTelecomWorkWithCustomers
             {
                 return clickSearch ?? (clickSearch = new RelayCommand(obj =>
                 {
+                    //get info about current customer
                     Current.Абоненты = WorkWithDB.GetCustomer(Current.Абоненты.ФИО, Current.Абоненты.Номер_телефона);
+                    //auto generate номер_заявки
                     Current.Номер_заявки = Current.Абоненты.Лицевой_счет + "/" + DateTime.Now.Day.ToString()
                     + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
+                    //auto generated date
                     Current.Дата_создания = DateTime.Now;
+                    //now can change data in заявка
                     StackPanelIsEnabled = true;
                 }));
             }
@@ -62,7 +68,6 @@ namespace NevaTelecomWorkWithCustomers
             get => saveЗаявку ?? (saveЗаявку = new RelayCommand(obj =>
             {
                 WorkWithDB.SendЗаявка(Current);
-                MessageBox.Show("gg");
             }));
         }
 

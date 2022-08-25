@@ -12,9 +12,18 @@ namespace NevaTelecomWorkWithCustomers
     using System;
     using System.Collections.Generic;
     
-    public partial class СтатусыЗаявки
+    public partial class Kinds_of_service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kinds_of_service()
+        {
+            this.TypesOfServices = new HashSet<TypesOfService>();
+        }
+    
         public int Id { get; set; }
-        public string Статус { get; set; }
+        public string Kind_of_service { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TypesOfService> TypesOfServices { get; set; }
     }
 }

@@ -45,5 +45,20 @@ namespace NevaTelecomWorkWithCustomers
                 }
             }
         }
+
+        internal static List<string> GetСтатусыЗаявки()
+        {
+            return (from p in db.СтатусыЗаявки select p.Статус).ToList();
+        }
+
+        internal static List<string> GetTypesOfProblem()
+        {
+            return (from p in db.Types_of_Problem select p.Type_of_problem).ToList();
+        }
+        internal static List<string> GetKindsOfService()
+        {
+            return (from p in db.Kinds_of_service select p.Kind_of_service).ToList();
+        }
+
     }
 }

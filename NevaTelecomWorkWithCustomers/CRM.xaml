@@ -4,10 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NevaTelecomWorkWithCustomers"
+      xmlns:vm="clr-namespace:NevaTelecomWorkWithCustomers"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CRM"
-      Background="White">
+      Background="White"
+      DataContext="{d:DesignInstance Type=vm:CRMViewModel}"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -43,14 +46,14 @@
             <Label>Услуга</Label>
                 <TextBox  Text="{Binding Path = Current.Абоненты.Услуги,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
             
-            <Label>Вид_ услуги</Label>
-            <TextBox></TextBox>
+            <Label>Вид услуги</Label>
+                <ComboBox ItemsSource="{Binding Path=KindsOfService}"></ComboBox>
             
-            <Label>Тип_ услуги</Label>
-            <TextBox></TextBox>
+            <Label>Тип услуги</Label>
+            <ComboBox ItemsSource="{Binding Path=}" ></ComboBox>
             
             <Label>Статус</Label>
-            <ComboBox></ComboBox>
+                <ComboBox SelectedIndex="0" ItemsSource="{Binding Path=СтатусыЗаявки}" ></ComboBox>
             
             <Label>Тип_ оборудования</Label>
             <TextBox Text="{Binding Path=Current.Абоненты.Серийный_номер_оборудования}"></TextBox>
@@ -59,7 +62,7 @@
             <TextBox Text="{Binding Path=Current.Описание_проблемы}"></TextBox>
 
             <Label>Тип_ проблемы</Label>
-            <TextBox></TextBox>
+                <ComboBox ItemsSource="{Binding Path=TypesOfProblem}" ></ComboBox>
             
             <Label>Дата_ закрытия</Label>
             <TextBox></TextBox>
