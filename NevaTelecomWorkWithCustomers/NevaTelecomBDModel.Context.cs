@@ -32,12 +32,13 @@ namespace NevaTelecomWorkWithCustomers
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<AvailableModule> AvailableModules { get; set; }
-        public virtual DbSet<Абоненты> Абоненты { get; set; }
-        public virtual DbSet<Заявки> Заявки { get; set; }
         public virtual DbSet<Kinds_of_service> Kinds_of_service { get; set; }
         public virtual DbSet<TypesOfService> TypesOfServices { get; set; }
         public virtual DbSet<Types_of_Problem> Types_of_Problem { get; set; }
         public virtual DbSet<СтатусыЗаявки> СтатусыЗаявки { get; set; }
+        public virtual DbSet<Оборудование> Оборудование { get; set; }
+        public virtual DbSet<Абоненты> Абоненты { get; set; }
+        public virtual DbSet<Заявки> Заявки { get; set; }
     
         public virtual ObjectResult<string> sp_GetEmployeePosition(string number)
         {

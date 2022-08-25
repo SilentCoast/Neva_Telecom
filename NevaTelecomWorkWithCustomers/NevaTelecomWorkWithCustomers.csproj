@@ -130,6 +130,9 @@
     <Compile Include="Заявки.cs">
       <DependentUpon>NevaTelecomBDModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Оборудование.cs">
+      <DependentUpon>NevaTelecomBDModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="СтатусыЗаявки.cs">
       <DependentUpon>NevaTelecomBDModel.tt</DependentUpon>
     </Compile>

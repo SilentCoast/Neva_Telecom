@@ -38,8 +38,16 @@ namespace NevaTelecomWorkWithCustomers
         public List<string> СтатусыЗаявки { get => WorkWithDB.GetСтатусыЗаявки(); }
         public List<string> TypesOfProblem { get=> WorkWithDB.GetTypesOfProblem(); }
         public List<string> KindsOfService { get => WorkWithDB.GetKindsOfService(); }
+        private string currentKindOfService;
+        public string CurrentKindOfService { get { return currentKindOfService; } 
+            set { 
+                currentKindOfService = value; 
+                Current.Вид_услуги = value;
+            } }
+        public List<string> TypesOfService { get => WorkWithDB.GetTypesOfService(CurrentKindOfService); }
+        public List<string> TypesOfОборудование { get => WorkWithDB.GetОборудование(); }
 
-        
+
 
 
         private RelayCommand clickSearch;
@@ -67,7 +75,13 @@ namespace NevaTelecomWorkWithCustomers
         {
             get => saveЗаявку ?? (saveЗаявку = new RelayCommand(obj =>
             {
-                WorkWithDB.SendЗаявка(Current);
+
+                if (Current.Статус == "Закрыта")
+                {
+                    Current.Дата_закрытия = DateTime.Now;
+                }
+                if(WorkWithDB.SendЗаявка(Current))
+                MessageBox.Show("Заявка сохранена");
             }));
         }
 

@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CRM"
       Background="White"
-      DataContext="{d:DesignInstance Type=vm:CRMViewModel}"
+      d:DataContext="{d:DesignInstance Type=vm:CRMViewModel}"
       >
 
     <Grid>
@@ -47,32 +47,31 @@
                 <TextBox  Text="{Binding Path = Current.Абоненты.Услуги,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
             
             <Label>Вид услуги</Label>
-                <ComboBox ItemsSource="{Binding Path=KindsOfService}"></ComboBox>
+                <ComboBox SelectedItem="{Binding Path=CurrentKindOfService}" ItemsSource="{Binding Path=KindsOfService}"></ComboBox>
             
             <Label>Тип услуги</Label>
-            <ComboBox ItemsSource="{Binding Path=}" ></ComboBox>
+            <ComboBox SelectedItem="{Binding Path=Current.Тип_услуги}" ItemsSource="{Binding Path=TypesOfService}" ></ComboBox>
             
             <Label>Статус</Label>
-                <ComboBox SelectedIndex="0" ItemsSource="{Binding Path=СтатусыЗаявки}" ></ComboBox>
+                <ComboBox SelectedItem="{Binding Path=Current.Статус}" SelectedIndex="0" ItemsSource="{Binding Path=СтатусыЗаявки}" ></ComboBox>
             
-            <Label>Тип_ оборудования</Label>
-            <TextBox Text="{Binding Path=Current.Абоненты.Серийный_номер_оборудования}"></TextBox>
+            <Label>Тип оборудования</Label>
+            <ComboBox SelectedItem="{Binding Path=Current.Тип_оборудования}" ItemsSource="{Binding Path=TypesOfОборудование}"></ComboBox>
             
             <Label>Описание_ проблемы</Label>
             <TextBox Text="{Binding Path=Current.Описание_проблемы}"></TextBox>
 
             <Label>Тип_ проблемы</Label>
-                <ComboBox ItemsSource="{Binding Path=TypesOfProblem}" ></ComboBox>
+                <ComboBox SelectedItem="{Binding Path=Current.Тип_проблемы}" ItemsSource="{Binding Path=TypesOfProblem}" ></ComboBox>
             
-            <Label>Дата_ закрытия</Label>
-            <TextBox></TextBox>
+            
             
             
 
         </StackPanel>
         </ScrollViewer>
         <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Padding="10" Command="{Binding Path=SaveЗаявку}">Сохранить и закрыть заявку</Button>
+            <Button IsEnabled="{Binding Path=StackPanelIsEnabled}" Padding="10" Command="{Binding Path=SaveЗаявку}">Сохранить и закрыть заявку</Button>
         </StackPanel>
     </Grid>
 </Page>

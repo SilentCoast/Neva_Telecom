@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace NevaTelecomWorkWithCustomers
 {
@@ -23,7 +24,7 @@ namespace NevaTelecomWorkWithCustomers
                     select z).FirstOrDefault();
 
         }
-        internal static void SendЗаявка(Заявки zai)
+        internal static bool SendЗаявка(Заявки zai)
         {
             db.Заявки.Add(zai);
 
@@ -44,6 +45,13 @@ namespace NevaTelecomWorkWithCustomers
                     }
                 }
             }
+            catch(Exception e)
+            {
+                
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            return true;
         }
 
         internal static List<string> GetСтатусыЗаявки()
@@ -58,6 +66,17 @@ namespace NevaTelecomWorkWithCustomers
         internal static List<string> GetKindsOfService()
         {
             return (from p in db.Kinds_of_service select p.Kind_of_service).ToList();
+        }
+        internal static List<string> GetTypesOfService(string kind_of_service)
+        {
+            var id = (from h in db.Kinds_of_service where h.Kind_of_service == kind_of_service select h.Id).FirstOrDefault();
+            return (from p in db.TypesOfServices where (p.KindOfServiceId == id) select p.TypeOfService).ToList();
+
+        }
+        internal static List<string> GetОборудование()
+        {
+            return (from p in db.Оборудование select p.Name).ToList();
+
         }
 
     }

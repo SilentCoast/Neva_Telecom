@@ -11,9 +11,12 @@ namespace NevaTelecomWorkWithCustomers
 {
     using System;
     using System.Collections.Generic;
-    
+    using PropertyChanged;
+
+    [AddINotifyPropertyChangedInterface]
     public partial class Заявки
     {
+        public int Id { get; set; }
         public string Номер_заявки { get; set; }
         public Nullable<System.DateTime> Дата_создания { get; set; }
         public string Вид_услуги { get; set; }
