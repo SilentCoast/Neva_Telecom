@@ -39,7 +39,7 @@
             <Separator Background="Transparent" Width="15"></Separator>
             <TextBox x:Name="txtFilterPersonalAccount" MinWidth="100" TextChanged="txtFilterFIO_TextChanged" FontSize="16"></TextBox>
         </StackPanel>
-        <DataGrid Name="dataGridCustomers" Grid.Row="1" AutoGenerateColumns="True"/>
+        <DataGrid Name="dataGridCustomers" Grid.Row="1" AutoGeneratingColumn="dataGridCustomers_AutoGeneratingColumn" />
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
             <CheckBox Name="checkBoxShowActiveCustomers" IsChecked="True" Content="Активные"  Unchecked="filtersChanged" Checked="filtersChanged" >
                 <CheckBox.LayoutTransform>

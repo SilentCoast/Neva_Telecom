@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace NevaTelecomWorkWithCustomers
-{
+{//TODO: FIO and number real time search
     [AddINotifyPropertyChangedInterface]  
     public class CRMViewModel
     {
@@ -25,7 +25,8 @@ namespace NevaTelecomWorkWithCustomers
             //end test data
 
         }
-
+        private string txtFIO;
+        private string txtPhoneNumber;
         private Заявки current;
         public Заявки Current
         {
@@ -46,6 +47,7 @@ namespace NevaTelecomWorkWithCustomers
             } }
         public List<string> TypesOfService { get => WorkWithDB.GetTypesOfService(CurrentKindOfService); }
         public List<string> TypesOfОборудование { get => WorkWithDB.GetОборудование(); }
+        public List<string> CustomersFIOs { get => WorkWithDB.GetCustomersFIOs(); }
 
 
 
@@ -57,15 +59,24 @@ namespace NevaTelecomWorkWithCustomers
             {
                 return clickSearch ?? (clickSearch = new RelayCommand(obj =>
                 {
-                    //get info about current customer
-                    Current.Абоненты = WorkWithDB.GetCustomer(Current.Абоненты.ФИО, Current.Абоненты.Номер_телефона);
-                    //auto generate номер_заявки
-                    Current.Номер_заявки = Current.Абоненты.Лицевой_счет + "/" + DateTime.Now.Day.ToString()
-                    + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
-                    //auto generated date
-                    Current.Дата_создания = DateTime.Now;
-                    //now can change data in заявка
-                    StackPanelIsEnabled = true;
+                        
+                        //get info about current customer
+                        Current.Абоненты = WorkWithDB.GetCustomer(TxtFIO,TxtPhoneNumber);
+                    if (Current.Абоненты == null)   
+                    {
+                        MessageBox.Show("Абонент не найден");
+                        return;
+                    }
+                        //auto generate номер_заявки
+                        Current.Номер_заявки = Current.Абоненты.Лицевой_счет + "/" + DateTime.Now.Day.ToString()
+                        + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
+                        //auto generated date
+                        Current.Дата_создания = DateTime.Now;
+                        //now can change data in заявка
+                        StackPanelIsEnabled = true;
+                    
+                        
+                    
                 }));
             }
         }
@@ -80,10 +91,30 @@ namespace NevaTelecomWorkWithCustomers
                 {
                     Current.Дата_закрытия = DateTime.Now;
                 }
-                if(WorkWithDB.SendЗаявка(Current))
-                MessageBox.Show("Заявка сохранена");
+                if (WorkWithDB.SendЗаявка(Current))
+                {
+                    MessageBox.Show("Заявка сохранена");
+                }
+                StackPanelIsEnabled = false;
             }));
         }
+        public string TxtFIO
+        {
+            get => txtFIO; set
+            {
 
+                txtFIO = value;
+                Current.Абоненты.ФИО = value;
+            }
+        }
+        public string TxtPhoneNumber
+        {
+            get => txtPhoneNumber; set
+            {
+                txtPhoneNumber = value;
+                Current.Абоненты.Номер_телефона = value;
+            }
+        }
+        
     }
 }

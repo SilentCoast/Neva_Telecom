@@ -17,8 +17,8 @@
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Types_of_Problem" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.СтатусыЗаявки" Width="1.5" PointX="5.375" PointY="3.75" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Оборудование" Width="1.5" PointX="4.375" PointY="9.75" />
-        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Абоненты" Width="1.5" PointX="6.375" PointY="10.125" />
         <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Заявки" Width="1.5" PointX="8.625" PointY="11" />
+        <EntityTypeShape EntityType="NEVA_TELECOM_DBModel.Абоненты" Width="1.5" PointX="6.375" PointY="12.125" />
         <AssociationConnector Association="NEVA_TELECOM_DBModel.FK_Заявки_Абоненты" />
       </Diagram>
     </edmx:Diagrams>

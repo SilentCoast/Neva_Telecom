@@ -285,8 +285,8 @@
           <EntitySet Name="Types_of_Problem" EntityType="NEVA_TELECOM_DBModel.Types_of_Problem" />
           <EntitySet Name="СтатусыЗаявки" EntityType="NEVA_TELECOM_DBModel.СтатусыЗаявки" />
           <EntitySet Name="Оборудование" EntityType="NEVA_TELECOM_DBModel.Оборудование" />
-          <EntitySet Name="Абоненты" EntityType="NEVA_TELECOM_DBModel.Абоненты" />
           <EntitySet Name="Заявки" EntityType="NEVA_TELECOM_DBModel.Заявки" />
+          <EntitySet Name="Абоненты" EntityType="NEVA_TELECOM_DBModel.Абоненты" />
           <AssociationSet Name="FK_Заявки_Абоненты" Association="NEVA_TELECOM_DBModel.FK_Заявки_Абоненты">
             <End Role="Абоненты" EntitySet="Абоненты" />
             <End Role="Заявки" EntitySet="Заявки" />
@@ -413,6 +413,23 @@
           <Property Name="Serial_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Заявки">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Номер_заявки" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_создания" Type="DateTime" Precision="0" />
+          <Property Name="Вид_услуги" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Тип_услуги" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Статус" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Тип_оборудования" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Описание_проблемы" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_закрытия" Type="DateTime" Precision="0" />
+          <Property Name="Тип_проблемы" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_абонента" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Абоненты" Relationship="NEVA_TELECOM_DBModel.FK_Заявки_Абоненты" FromRole="Заявки" ToRole="Абоненты" />
+        </EntityType>
         <EntityType Name="Абоненты">
           <Key>
             <PropertyRef Name="Номер_абонента" />
@@ -438,23 +455,6 @@
           <Property Name="Дата_расторжения_договора" Type="DateTime" Precision="0" />
           <Property Name="Серийный_номер_оборудования" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Заявки" Relationship="NEVA_TELECOM_DBModel.FK_Заявки_Абоненты" FromRole="Абоненты" ToRole="Заявки" />
-        </EntityType>
-        <EntityType Name="Заявки">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Номер_заявки" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Дата_создания" Type="DateTime" Precision="0" />
-          <Property Name="Вид_услуги" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Тип_услуги" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Статус" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Тип_оборудования" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Описание_проблемы" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Дата_закрытия" Type="DateTime" Precision="0" />
-          <Property Name="Тип_проблемы" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Номер_абонента" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Абоненты" Relationship="NEVA_TELECOM_DBModel.FK_Заявки_Абоненты" FromRole="Заявки" ToRole="Абоненты" />
         </EntityType>
         <Association Name="FK_Заявки_Абоненты">
           <End Type="NEVA_TELECOM_DBModel.Абоненты" Role="Абоненты" Multiplicity="0..1" />
@@ -590,6 +590,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Заявки">
+            <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.Заявки">
+              <MappingFragment StoreEntitySet="Заявки">
+                <ScalarProperty Name="Номер_абонента" ColumnName="Номер_абонента" />
+                <ScalarProperty Name="Тип_проблемы" ColumnName="Тип_проблемы" />
+                <ScalarProperty Name="Дата_закрытия" ColumnName="Дата_закрытия" />
+                <ScalarProperty Name="Описание_проблемы" ColumnName="Описание_проблемы" />
+                <ScalarProperty Name="Тип_оборудования" ColumnName="Тип_оборудования" />
+                <ScalarProperty Name="Статус" ColumnName="Статус" />
+                <ScalarProperty Name="Тип_услуги" ColumnName="Тип_услуги" />
+                <ScalarProperty Name="Вид_услуги" ColumnName="Вид_услуги" />
+                <ScalarProperty Name="Дата_создания" ColumnName="Дата_создания" />
+                <ScalarProperty Name="Номер_заявки" ColumnName="Номер_заявки" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Абоненты">
             <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.Абоненты">
               <MappingFragment StoreEntitySet="Абоненты">
@@ -613,23 +630,6 @@
                 <ScalarProperty Name="Пол" ColumnName="Пол" />
                 <ScalarProperty Name="ФИО" ColumnName="ФИО" />
                 <ScalarProperty Name="Номер_абонента" ColumnName="Номер_абонента" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Заявки">
-            <EntityTypeMapping TypeName="NEVA_TELECOM_DBModel.Заявки">
-              <MappingFragment StoreEntitySet="Заявки">
-                <ScalarProperty Name="Номер_абонента" ColumnName="Номер_абонента" />
-                <ScalarProperty Name="Тип_проблемы" ColumnName="Тип_проблемы" />
-                <ScalarProperty Name="Дата_закрытия" ColumnName="Дата_закрытия" />
-                <ScalarProperty Name="Описание_проблемы" ColumnName="Описание_проблемы" />
-                <ScalarProperty Name="Тип_оборудования" ColumnName="Тип_оборудования" />
-                <ScalarProperty Name="Статус" ColumnName="Статус" />
-                <ScalarProperty Name="Тип_услуги" ColumnName="Тип_услуги" />
-                <ScalarProperty Name="Вид_услуги" ColumnName="Вид_услуги" />
-                <ScalarProperty Name="Дата_создания" ColumnName="Дата_создания" />
-                <ScalarProperty Name="Номер_заявки" ColumnName="Номер_заявки" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

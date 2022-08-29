@@ -37,8 +37,8 @@ namespace NevaTelecomWorkWithCustomers
         public virtual DbSet<Types_of_Problem> Types_of_Problem { get; set; }
         public virtual DbSet<СтатусыЗаявки> СтатусыЗаявки { get; set; }
         public virtual DbSet<Оборудование> Оборудование { get; set; }
-        public virtual DbSet<Абоненты> Абоненты { get; set; }
         public virtual DbSet<Заявки> Заявки { get; set; }
+        public virtual DbSet<Абоненты> Абоненты { get; set; }
     
         public virtual ObjectResult<string> sp_GetEmployeePosition(string number)
         {

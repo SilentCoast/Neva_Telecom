@@ -21,9 +21,9 @@
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Label>ФИО</Label>
-            <TextBox Text="{Binding Current.Абоненты.ФИО}" MinWidth="200"></TextBox>
+            <ComboBox IsEditable="True" ItemsSource="{Binding Path=CustomersFIOs}" SelectedItem="{Binding TxtFIO}" MinWidth="200"></ComboBox>
             <Label>Телефон</Label>
-            <TextBox Text="{Binding Current.Абоненты.Номер_телефона}" MinWidth="200"></TextBox>
+            <TextBox Text="{Binding Path=TxtPhoneNumber}" MinWidth="200"></TextBox>
             <Button Command="{Binding ClickSearch}" >Поиск абонента</Button>
         </StackPanel>
         <Border Grid.Row="1" BorderThickness="4" BorderBrush="Black"></Border>
@@ -47,7 +47,7 @@
                 <TextBox  Text="{Binding Path = Current.Абоненты.Услуги,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
             
             <Label>Вид услуги</Label>
-                <ComboBox SelectedItem="{Binding Path=CurrentKindOfService}" ItemsSource="{Binding Path=KindsOfService}"></ComboBox>
+                <ComboBox  SelectedItem="{Binding Path=CurrentKindOfService}" ItemsSource="{Binding Path=KindsOfService}"></ComboBox>
             
             <Label>Тип услуги</Label>
             <ComboBox SelectedItem="{Binding Path=Current.Тип_услуги}" ItemsSource="{Binding Path=TypesOfService}" ></ComboBox>

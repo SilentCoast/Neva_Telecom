@@ -78,6 +78,11 @@ namespace NevaTelecomWorkWithCustomers
             return (from p in db.Оборудование select p.Name).ToList();
 
         }
+        internal static List<string> GetCustomersFIOs()
+        {
+            return (from p in db.Абоненты select p.ФИО).ToList();
+
+        }
 
     }
 }
